@@ -1,17 +1,54 @@
+// const displayCategories = (categories) => {
+//   for (const category of categories) {
+//     //   console.log(category);
+//     const categoryContainer = document.getElementById("category-container");
+//     const li = document.createElement("li");
+//     li.innerHTML = `
+
+//         <a onclick="loadTreesByCatagory(${category.id})" href="#" class="hover:bg-green-600 hover:text-white">${category.category_name}</a>
+//         `;
+//     categoryContainer.appendChild(li);
+//   }
+// };
+
 const displayCategories = (categories) => {
-  for (const category of categories) {
-    //   console.log(category);
-    const categoryContainer = document.getElementById("category-container");
+  const categoryContainer = document.getElementById("category-container");
+
+  categories.forEach((category) => {
     const li = document.createElement("li");
-    li.innerHTML = `
-  
-        <a onclick="loadTreesByCatagory(${category.id})" href="#" class="hover:bg-green-600 hover:text-white">${category.category_name}</a>
-        `;
+    const a = document.createElement("a");
+
+    a.href = "#";
+    a.innerText = category.category_name;
+
+    // default styles
+    a.className = "hover:bg-green-600 hover:text-white px-3 py-2 rounded";
+
+    a.addEventListener("click", (e) => {
+      e.preventDefault();
+
+      // remove active class from all
+      document
+        .querySelectorAll("#category-container a")
+        .forEach((el) => el.classList.remove("bg-green-600", "text-white"));
+
+      // add active class to clicked one
+      a.classList.add("bg-green-600", "text-white");
+
+      // load category data
+      loadTreesByCatagory(category.id);
+    });
+
+    li.appendChild(a);
     categoryContainer.appendChild(li);
-  }
+  });
 };
 
 const displayTrees = (trees) => {
+  document
+    .getElementById("loadAllTreesbtn")
+    .classList.add("bg-green-600", "text-white");
+
   document.getElementById("tree-container").innerHTML = "";
 
   // const displayTreeContainer = document.getElementById()
@@ -54,8 +91,6 @@ const displayTrees = (trees) => {
     treeContainer.appendChild(div);
   }
 };
-
-
 
 const displayTreeModal = (plant) => {
   document.getElementById("plant_detail_container").innerHTML = "";

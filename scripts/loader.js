@@ -20,9 +20,12 @@ const loadTrees = () => {
 
 setTimeout(() => {
   loadTrees();
-}, 5000);
+}, 2000);
 
 const loadTreesByCatagory = (id) => {
+  document
+    .getElementById("loadAllTreesbtn")
+    .classList.remove("bg-green-600", "text-white");
   const url = `https://openapi.programming-hero.com/api/category/${id}`;
   fetch(url)
     .then((response) => response.json())

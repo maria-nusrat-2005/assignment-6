@@ -133,7 +133,8 @@
               >
                 <li>
                   <a
-                    onclick="loadTrees() "
+                    onclick="loadTrees()"
+                    id="loadAllTreesbtn"
                     class="hover:bg-green-600 hover:text-white"
                     >All Trees</a
                   >
@@ -147,26 +148,15 @@
           >
             <!-- spinner -->
 
-            <div id="spinner" class="flex hidden justify-center items-center">
-              <span class="loading loading-spinner loading-xs"></span>
+            <div id="spinner" class="flex justify-center items-center">
+              <span class="loading loading-spinner loading-lg"></span>
             </div>
             <!-- 1st card -->
           </div>
           <!-- your cart -->
           <div class="md:w-2/12 p-4 bg-white">
             <h2 class="text-2xl font-bold text-center">Your cart</h2>
-            <div class="flex flex-col gap-2" id="item-container">
-              <div
-                id="item"
-                class="bg-green-100 flex items-center justify-between p-4 mt-5 rounded-xl"
-              >
-                <div>
-                  <h4>Mango Tree</h4>
-                  <p class="text-gray-400">৳500 x 1</p>
-                </div>
-                <p class="text-gray-600">x</p>
-              </div>
-            </div>
+            <div class="flex flex-col gap-2" id="item-container"></div>
 
             <div class="flex justify-between items-center">
               <p>Total:</p>

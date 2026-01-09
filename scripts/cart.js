@@ -9,6 +9,15 @@ const addToCart = (id, name, price) => {
   console.log(cart);
   showItemsInCart();
 };
+
+const removeItem = (id) => {
+  const index = cart.findIndex((item) => item.id === id);
+  console.log(id, index);
+  if (index !== -1) {
+    cart.splice(index, 1);
+    showItemsInCart();
+  }
+};
 const showItemsInCart = () => {
   const cartContainer = document.getElementById("item-container");
   cartContainer.innerHTML = "";
@@ -32,7 +41,7 @@ const showItemsInCart = () => {
                   <h4>${item.name}</h4>
                   <p class="text-gray-400">৳ ${item.price} x 1</p>
                 </div>
-                <p class="text-gray-600">x</p>
+                <p onclick="removeItem('${item.id}')" class=" class="text-gray-600 cursor-pointer">x</p>
               </div>`;
     cartContainer.appendChild(div);
   }
